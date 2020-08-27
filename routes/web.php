@@ -35,7 +35,7 @@ Route::get('produtos/create', 'ProductsController@create')
     ->name('createProduto');
 
 Route::get('categoriaProdutos', [CategoriaProductsController::class, 'index'])
-    ->name('categoriaProdutosIndex');
+    ->name('categoriaIndex');
 
 Route::get('categoriaProdutos/show/{id}', 'CategoriaProductsController@show')
     ->name('showCategoria');
@@ -51,3 +51,9 @@ Route::get('CategoriaProdutos/create', 'CategoriaProductsController@create')
 
 Route::post('CategoriaProdutos/createNewCategoria', 'CategoriaProductsController@createNewCategoria')
     ->name('createNewCategoria');
+
+Route::get('categoriaProdutos/edit/{id}', 'CategoriaProductsController@edit')
+    ->name('editCategoria');
+
+Route::post('categoriaProdutos/update/{id}', 'CategoriaProductsController@update')
+    ->name('updateCategoria');

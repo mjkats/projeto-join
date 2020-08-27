@@ -38,12 +38,11 @@ class CategoriaProductsController extends Controller
 
     public function createNewCategoria(Request $request){
 
-        dd($request);
-
         $request->validate([
             'nome' => 'required'
         ]);
 
+        $category = new CategoriaProdutos();
         $category->nome = $request->get('nome');
         $category->save();
         
@@ -61,6 +60,13 @@ class CategoriaProductsController extends Controller
         $category->nome = $request->get('nome');
         $category->save();
 
-        return redirect()->route('showCategoriaProduto', ['id' => $id]);
+        return redirect()->route('showCategoria', ['id' => $id]);
+    }
+
+    public function edit($id){
+
+        $category = CategoriaProdutos::find($id);
+        
+        return view("categoriaProdutos.edit", compact("category"));
     }
 }

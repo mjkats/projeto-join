@@ -10,14 +10,16 @@ class ProductsController extends Controller
 
     //works
     public function index(){
-        $produtos = Produtos::all()->toArray();
+        $produtos = Produtos::getAll();
+
+        dd($produtos);
 
         return view("produtos.index", compact("produtos"));
     }
 
     //works
     public function show($id){
-        $produto = Produtos::findOrFail($id);
+        $produto = Produtos::getOne($id);
 
         return view("produtos.show", compact("produto"));
     }
@@ -48,6 +50,6 @@ class ProductsController extends Controller
         $product->nome = $request->get('nome');
         $product->save();
 
-        return redirect()->route('showCategoriaProduto', ['id' => $id]);
+        return redirect()->route('showProduto', ['id' => $id]);
     }
 }
